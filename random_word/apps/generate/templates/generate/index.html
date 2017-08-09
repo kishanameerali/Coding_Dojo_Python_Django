@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link href="css/style.css" rel="stylesheet">-->
+    </head>
+    <body>
+            <p>Random Word Attempt Number: {{ request.session.counter }}</p>
+            <p>Random Word is: </p>
+            <p>{{ request.session.word }}</p>
+
+            <form action="/random_word/" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Generate">
+            </form>
+    </body>
+</html>
