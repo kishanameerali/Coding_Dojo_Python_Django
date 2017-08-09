@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link href="css/style.css" rel="stylesheet">-->
+        <style>
+            #first_line{
+                border: 1px solid black;
+                display: inline-block;
+                padding: 10px;
+                margin-left: 43%;
+                text-align: center;
+            }
+
+            #show_time{
+                margin: auto;
+                width: 50%;
+                border: 3px solid green;
+                padding: 10px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <p id='first_line'>The current time and date: </p>
+        <div id='show_time'>
+            {{time}}
+        </div>
+    
+    </body>
+</html>
