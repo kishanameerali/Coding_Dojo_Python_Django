@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link href="css/style.css" rel="stylesheet">-->
+    </head>
+    <body>
+            <div id='word_add'>
+                    <form action='/process' method='post'>
+                            {% csrf_token %}
+                            <h3>Add a new word</h3>
+                            <textarea name="word" rows="2" cols="20"></textarea>
+                            <p>Choose color</p>
+                            <input type="radio" name="color" value="Red">Red</input><br>
+                            <input type="radio" name="color" value="Green">Green</input><br>
+                            <input type="radio" name="color" value="Blue">Blue</input><br>
+                            <input type="checkbox" name="font_size" value="Big">Show in BIG fonts</input><br>
+                            <input type="submit" value="Add to Session"><br>
+                    </form>
+            </div>
+            
+            <div id='word_results'>
+                    <form action='/reset' method='post'>
+                            {% csrf_token %}
+                            <input type="submit" value="Clear Session">
+                    </form>
+                    <ul>
+                        {% for word in request.session.word_total %}
+                            <li><span style='color:{{request.session.color}}'>{{ word }}</span></li>
+                        {% endfor %}
+                    </ul>
+            </div>
+    
+    </body>
+</html>
