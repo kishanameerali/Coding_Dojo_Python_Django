@@ -8,7 +8,7 @@ def buy(request):
     
     if request.POST['product_id'] == 1:
         price = 19.99
-        request.session['purchase'] = price * request.session['quantity']
+        purchase = price * request.session['quantity']
     elif request.POST['product_id'] == 2:
         price = 29.99
         purchase = price * request.session['quantity']
