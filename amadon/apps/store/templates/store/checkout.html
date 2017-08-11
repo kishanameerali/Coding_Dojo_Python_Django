@@ -9,7 +9,7 @@
     <body>
         <h2>Thank you for your business!</h2>
         <p>We charged your credit card for ${{ purchase }}</p>
-        <p>You have ordered {{ items_ordered }} items so far and spent ${{ total_purchases }} with Amadon.com!</p>
+        <p>You have ordered {{ request.session.items_ordered }} items so far and spent ${{ request.session.total_purchases }} with Amadon.com!</p>
         <a href="/">Go Back</a>
     
     </body>
