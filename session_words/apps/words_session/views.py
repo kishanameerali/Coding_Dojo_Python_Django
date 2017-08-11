@@ -16,13 +16,13 @@ def process(request):
     try:
         request.POST['font_size']
         request.session['font_size'] = True
+        request.session['font'] = '2em'
     except:
         request.session['font_size'] = False
+        request.session['font'] = '1em'
     request.session['word_total'].insert(0, request.session['word'] + ' added on ' + datetime.datetime.now().strftime('%Y/%m/%d %I:%M'))
     return redirect('/')
 
 def reset(request):
     del request.session['word_total']
     return redirect('/')
-
-# Create your views here.

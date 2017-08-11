@@ -28,7 +28,7 @@
                     </form>
                     <ul>
                         {% for word in request.session.word_total %}
-                            <li><span style='color:{{request.session.color}}'>{{ word }}</span></li>
+                            <li><span style='color:{{request.session.color}};font-size:{{request.session.font}}'>{{ word }}</span></li>
                         {% endfor %}
                     </ul>
             </div>

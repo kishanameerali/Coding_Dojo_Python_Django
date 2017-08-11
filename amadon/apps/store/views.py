@@ -5,19 +5,27 @@ def index(request):
 
 def buy(request):
     request.session['quantity'] = int(request.POST['quantity'])
+
+    try:
+        request.session['purchase']
+    except KeyError:
+        request.session['purchase'] = 0
+
+    try:
+        request.session['price']
+    except KeyError:
+        request.session['price'] = 0
     
     if request.POST['product_id'] == 1:
-        price = 19.99
-        purchase = price * request.session['quantity']
+        request.session['price'] = 19.99
     elif request.POST['product_id'] == 2:
-        price = 29.99
-        purchase = price * request.session['quantity']
+        request.session['price'] = 29.99
     elif request.POST['product_id'] == 3:
-        price = 4.99
-        purchase = price * request.session['quantity']
+        request.session['price'] = 4.99
     elif request.POST['product_id'] == 4:
-        price = 49.99
-        purchase = price * request.session['quantity']
+        request.session['price'] = 49.99
+
+    request.session['purchase'] = request.session['price'] * request.session['quantity']
 
     try:
         request.session['items_ordered']
@@ -30,7 +38,7 @@ def buy(request):
         request.session['total_purchases'] = 0
     
     request.session['items_ordered'] += request.session['quantity']
-    request.session['total_purchases'] += purchase
+    request.session['total_purchases'] += request.session['purchase']
     return redirect('/checkout')
 
 def checkout(request):
