@@ -27,8 +27,8 @@
                             <input type="submit" value="Clear Session">
                     </form>
                     <ul>
-                        {% for word in request.session.word_total %}
-                            <li><span style='color:{{request.session.color}};font-size:{{request.session.font}}'>{{ word }}</span></li>
+                        {% for word, color, font, date in request.session.word_total %}
+                                <li><span style='color:{{color}};font-size:{{font}}'>{{ word }}</span>  - added on {{ date }}</li>
                         {% endfor %}
                     </ul>
             </div>

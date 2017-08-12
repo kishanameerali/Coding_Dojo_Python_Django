@@ -104,8 +104,8 @@
 
             <p>Activities</p>
             <div id="activity">
-                {% for idx in request.session.result %}
-                <p>{{ idx }}</p>
+                {% for earnings, color in request.session.result %}
+                <p><span style='color:{{color}}'>{{ earnings }}</span></p>
                 {% endfor %}
             </div>
     </body>
