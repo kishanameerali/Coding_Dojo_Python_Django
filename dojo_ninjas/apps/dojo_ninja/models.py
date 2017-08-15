@@ -6,11 +6,12 @@ class Dojo(models.Model):
     name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=2)
+    desc = models.TextField
 
     def __str__(self):
-        return 'Name: {}, City: {}, State: {}'.format(self.name, self.city, self.state)
+        return 'Name: {}, City: {}, State: {}, Desc: {}'.format(self.name, self.city, self.state, self.desc)
 
-class Ninja(models.Model):
+class Student(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     dojo = models.ForeignKey(Dojo)
