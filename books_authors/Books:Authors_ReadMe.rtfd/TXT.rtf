@@ -1,0 +1,150 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red48\green61\blue72;\red63\green63\blue63;\red63\green63\blue63;
+}
+{\*\expandedcolortbl;;\cssrgb\c24314\c30588\c35294;\cssrgb\c31373\c31373\c31373;\cssrgb\c31373\c31373\c31373;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid2\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl800\sa60\partightenfactor0
+
+\f0\b\fs28 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Assignment: Books/Authors
+\b0\fs24 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {{\NeXTGraphic Pasted Graphic.tiff \width6940 \height7040
+}¬}\cf3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 \
+\pard\pardeftab720\sl504\sa200\partightenfactor0
+\cf3 Create a new app called 'book_authors' in the same project where you did the previous assignment: Dojo Ninjas. \'a0You'll use this assignment as well as the previous assignment to learn about Ajax.\
+Please do the following\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\ri200\sl504\partightenfactor0
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Create a new model called\'a0'Book'\'a0with the information above.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Create a new model called 'Author' with the information above. \'a0Design the models in a way that you could perform the following:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\ri200\sl504\partightenfactor0
+\ls1\ilvl1\cf3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Book.objects.first().authors\
+\ls1\ilvl1\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Author.objects.first().books\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\ri200\sl504\partightenfactor0
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Successfully create and run the migration files\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 Using the shell...\
+\pard\tx566\pardeftab720\ri200\sl504\partightenfactor0
+\cf3 \
+\pard\tx566\pardeftab720\ri200\partightenfactor0
+\cf3 Create 5 books with the following names: C sharp, Java, Python, PHP, Ruby\
+\
+
+\i Book.objects.create(name="C sharp", desc="C# by Microsoft")\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 Book.objects.create(name="Java, desc="Not about coffee")\
+Book.objects.create(name="Python", desc="Not about the snake")\
+Book.objects.create(name="PHP", desc="Lamp Stuff")\
+Book.objects.create(name="Ruby", desc="Ride the Rails")
+\i0 \
+\
+\pard\tx566\pardeftab720\ri200\partightenfactor0
+\cf3 Create 5 different authors: Mike, Speros, John, Jadee, Jay\
+\
+
+\i Author.objects.create(first_name="Mike", last_name="Choi", email="mchoi@dojo.com")\
+Author.objects.create(first_name="Speros", last_name="Misirlakis", email="sperosm@dojo.com")\
+Author.objects.create(first_name="John", last_name="Smith", email="johnsmith@dojo.com")\
+Author.objects.create(first_name="Jadee", last_name="Drew", email="jadee@dojo.com")\
+Author.objects.create(first_name="Jay", last_name="Buhner", email="jbuhner@dojo.com")
+\i0 \
+\
+Add a new field in the authors table called 'notes'.  Make this a TextField.  Successfully create and run the migration files.\
+\
+Change the name of the 5th book to C#\
+\
+
+\i w = Book.objects.get(id=5)\
+w.name = "C#"\
+w.save()
+\i0 \
+\
+Change the first_name of the 5th author to Ketul\
+\
+
+\i a = Author.objects.get(id=5)\
+a.first_name = "Ketul"\
+a.save()
+\i0 \
+\
+Assign the first author to the first 2 books\
+\
+
+\i Author.objects.get(id=1).books.add(Book.objects.get(id=1))\
+Author.objects.get(id=1).books.add(Book.objects.get(id=2))
+\i0 \
+\
+Assign the second author to the first 3 books\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\i \cf3 Author.objects.get(id=2).books.add(Book.objects.get(id=1))\
+Author.objects.get(id=2).books.add(Book.objects.get(id=2))\
+Author.objects.get(id=2).books.add(Book.objects.get(id=3))
+\i0 \
+\pard\tx566\pardeftab720\ri200\partightenfactor0
+\cf3 \
+Assign the third author to the first 4 books\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\i \cf4 \outl0\strokewidth0 Author.objects.get(id=3).books.add(Book.objects.get(id=1))\
+Author.objects.get(id=3).books.add(Book.objects.get(id=2))\
+Author.objects.get(id=3).books.add(Book.objects.get(id=3))\
+Author.objects.get(id=3).books.add(Book.objects.get(id=4))
+\i0 \cf3 \outl0\strokewidth0 \strokec3 \
+\pard\tx566\pardeftab720\ri200\partightenfactor0
+\cf3 \
+Assign the fourth author to the first 5 books (or in other words, all the books)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\i \cf4 \outl0\strokewidth0 Author.objects.get(id=4).books.add(Book.objects.get(id=1))\
+Author.objects.get(id=4).books.add(Book.objects.get(id=2))\
+Author.objects.get(id=4).books.add(Book.objects.get(id=3))\
+Author.objects.get(id=4).books.add(Book.objects.get(id=4))\
+Author.objects.get(id=4).books.add(Book.objects.get(id=5))
+\i0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \outl0\strokewidth0 \strokec3 \
+\pard\tx566\pardeftab720\ri200\partightenfactor0
+\cf3 For the 3rd book, retrieve all the authors\
+\
+
+\i Book.objects.get(id=3).author_set.all()
+\i0 \
+\
+For the 3rd book, remove the first author\
+\
+
+\i Author.objects.get(id=2).books.remove(Book.objects.get(id=3))
+\i0 \
+\
+For the 2nd book, add the 5th author as one of the authors\
+\
+
+\i Author.objects.get(id=5).books.add(Book.objects.get(id=2))
+\i0 \
+\
+Find all the books that the 3rd author is part of\
+\
+
+\i Author.objects.get(id=3).books.all()
+\i0 \
+\
+Find all the books that the 2nd author is part of\
+\
+\pard\tx566\pardeftab720\ri920\partightenfactor0
+
+\i \cf4 \outl0\strokewidth0 Author.objects.get(id=2).books.all()}
