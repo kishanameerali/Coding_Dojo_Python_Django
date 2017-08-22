@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link href="css/style.css" rel="stylesheet">-->
+    </head>
+    <body>
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <p>Registered at {{ user.created_at }}</p>
+        <p>User ID: #{{ user.id }}</p>
+        <p>Email address: {{ user.email }}</p>
+        <p>Description: {{ user.desc }}</p>
+
+        <h2>Leave a message for {{ show_user.first_name }}</h2>
+        <form action='/users/show/message' method='post'>
+            {% csrf_token %}
+            <textarea name='content'rows="3" cols="30"></textarea>
+            <input type="submit" value="Post">
+        </form>
+        {% for msg in all_msgs %}
+            <p>{{ msg.from_user_first }} {{ msg.from_user_last }} wrote at {{ msg.created_at }} </p>
+            <p>{{ msg.content }}</p>
+            {% for comm in all_comms %}
+                {% if comm.message == msg.id %}
+                    <p>{{ comm.from_user_first }} {{ comm.from_user_last }} wrote at {{ comm.created_at }} </p>
+                    <p>{{ comm.content }}</p>
+                {% endif %}
+            {% endfor %}
+            <form action='/users/show/comment' method='post'>
+                {% csrf_token %}
+                <input type="hidden" name="chosen_msg" value="{{ msg.id }}">
+                <textarea name='content' rows="3" cols="30">Leave a comment</textarea>
+                <input type="submit" value="Post">
+            </form>
+        {% endfor %}
+    </body>
+</html>

@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import messages
@@ -24,8 +25,10 @@ def register(request):
 def login(request):
     user_login = User.objects.filter(email=request.POST['email'])
     if len(user_login) > 0:
-        if bcrypt.checkpw((request.POST['password']).encode(), user_login['password']):
-            messages.success(request, "Success, Welcome {}, successfully logged in".format(user_login.first_name))
+        if bcrypt.checkpw((request.POST['password']).encode(), (user_login[0].password).encode()):
+            request.session['id'] = user_login[0].id
+            print user_login[0].first_name
+            messages.success(request, "Success, Welcome {}, successfully logged in".format(user_login[0].first_name))
             return redirect('/success')
         else:
             messages.error(request, "Email or Password Invalid")

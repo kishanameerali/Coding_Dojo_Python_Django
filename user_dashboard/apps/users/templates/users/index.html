@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link href="css/style.css" rel="stylesheet">-->
+    </head>
+    <body>
+        <div>
+            <h1>Weclome to the Test</h1>
+            <p>We're going to build a cool application using a MVC framework! This application was built with the Village88 folks!</p>
+            <form action='/signin' method='POST'>
+                {% csrf_token %}
+                <input type="submit" value="Start">
+            </form>
+        </div>
+        <div>
+            <p>Manage Users</p>
+            <p>Using this application, you'll learn how to add, remove, and edit users for the application.</p>
+        </div>
+        <div>
+            <p>Leave messages</p>
+            <p>Users will be able to leave a message to another user using this application</p>
+        </div>
+        <div>
+            <p>Edit User Information</p>
+            <p>Admins will be able to edit another user's information (email address, first name, last name, etc)</p>
+        </div>
+    
+    </body>
+</html>

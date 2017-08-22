@@ -4,28 +4,23 @@ def index(request):
     return render(request, 'store/index.html')
 
 def buy(request):
-    request.session['quantity'] = int(request.POST['quantity'])
+    if "purchase_price" in request.session.keys():
+        del request.session['purchase_price']
 
-    try:
-        request.session['purchase']
-    except KeyError:
-        request.session['purchase'] = 0
+    price = 0
 
-    try:
-        request.session['price']
-    except KeyError:
-        request.session['price'] = 0
-    
     if request.POST['product_id'] == 1:
-        request.session['price'] = 19.99
+        price = 19.99 * int(request.POST['quantity'])
+        #purchase = price * int(request.POST['quantity'])
     elif request.POST['product_id'] == 2:
-        request.session['price'] = 29.99
+        price = 29.99 * int(request.POST['quantity'])
+        #purchase = price * int(request.POST['quantity'])
     elif request.POST['product_id'] == 3:
-        request.session['price'] = 4.99
+        price = 4.99 * int(request.POST['quantity'])
+        #purchase = price * int(request.POST['quantity'])
     elif request.POST['product_id'] == 4:
-        request.session['price'] = 49.99
-
-    request.session['purchase'] = request.session['price'] * request.session['quantity']
+        price = 49.99 * int(request.POST['quantity'])
+        #purchase = price * int(request.POST['quantity'])
 
     try:
         request.session['items_ordered']
@@ -36,9 +31,14 @@ def buy(request):
         request.session['total_purchases']
     except KeyError:
         request.session['total_purchases'] = 0
+
+    request.session['total_purchases'] += price
+    request.session['items_ordered'] += int(request.POST['quantity'])
+    request.session['purchase_price'] = price
     
-    request.session['items_ordered'] += request.session['quantity']
-    request.session['total_purchases'] += request.session['purchase']
+    print request.session['purchase']
+    print request.session['items_ordered']
+    print request.session['total_purchases']
     return redirect('/checkout')
 
 def checkout(request):
