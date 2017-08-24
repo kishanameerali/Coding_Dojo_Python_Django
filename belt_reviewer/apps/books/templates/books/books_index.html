@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            section {
+                width: 900px;
+                display: inline-block;
+            }
+
+            #recent {
+                display: inline-block;
+                margin-right: 50px;
+            }
+
+            #books_reviews {
+                display: inline-block;
+                border: 2px solid black;
+                overflow: scroll;
+                width: 325px;
+                height: 275px;
+                vertical-align: top;
+                padding-left: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+                {% if messages %}
+                    {% for message in messages %}
+                        <h2>{{message}}</h2>
+                    {% endfor %}
+                {% endif %}
+                <a href="/books/add">Add Book and Review</a> <a href="/logout">Logout</a>
+        </header>
+        <section>
+            <div id='recent'>
+                <h2>Recent Book Reviews:</h2>
+                {% for review in reviews %}
+                <h2><a href="/books/{{ review.book.id }}">{{ review.book.title }}</a></h2>
+                <p>Rating: {{ review.rating }}/5 stars</p>
+                <p><a href="/users/{{ review.user.id }}">{{ review.user.alias }}</a> says: {{ review.comment }}</p>
+                <p>Posted on {{ review.created_at }}</p>
+                {% endfor %}
+            </div>
+                <div id='books_reviews'>
+                <h2>Other Books with Reviews:</h2>
+                    {% for book in all_books %}
+                        {% if book.reviews.count > 0 %}
+                            <p><a href="/books/{{ book.id }}">{{ book.title }}</a></p>
+                        {% endif %}
+                    {% endfor %} 
+                </div>
+        </section>
+    </body>
+</html>

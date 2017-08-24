@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            section > div {
+                display: inline-block;
+                border-top: 2px solid black;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <header>
+                <a href="/books">Home</a> <a href="/logout">Logout</a>
+        </header>
+        <nav>
+                <h2>{{ book.title }}</h2>
+                <p>Author: {{ book.author.name }}</p>
+        </nav>
+        <section>
+                <h2>Reviews:</h2>
+                {% for review in book.reviews.all %}
+                <div>
+                    <p>Rating: {{ review.rating }} stars</p>
+                    <p><a href="/users/{{ review.user.id }}">{{review.user.alias}}</a> says: {{ review.comment }}</p>
+                    <p>{{review.created_at}}</p>
+                    {% if review.user.id == request.session.id %}
+                    <p><a href="/books/delete/{{ review.id }}">Delete this Review</a></p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+        </section>
+            <form action='/books/create_review/{{ book.id }}' method='post'>
+                {% csrf_token %}
+                <p>Add a review:</p>
+                <textarea name="comment" rows="3" cols="30"></textarea>
+                <select name='rating'>
+                    <option value="0">0 stars</option>
+                    <option value="1">1 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="5">5 stars</option> 
+                </select>
+                <input type="submit" value="submit review">
+            </form>
+    
+    </body>
+</html>
